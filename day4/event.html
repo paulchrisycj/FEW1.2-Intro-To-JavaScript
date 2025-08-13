@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handlers</title>
+    <style>
+        #myButton {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #myButton:hover {
+            background-color: blue;
+        }
+        body {
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <button id="myButton">Click me</button>
+
+    <button class="myButton">Button 1</button>
+	<button class="myButton">Button 2</button>
+	<button class="myButton">Button 3</button>
+
+    <form>
+        <input type="text" name="myinput" id="myinput">
+    </form>
+
+    <h1 id="myHeading">Hello World</h1>
+    <script>
+        // Select the button element
+        let myButton = document.getElementById("myButton")
+
+        // myButton.onclick = function(){
+        //     alert("Button clicked!")
+        // }
+
+        // myButton.addEventListener("mouseover", function(){
+        //     alert("My Button clicked")
+        // })
+
+        // myButton.onmouseover = function(){
+        //     myButton.style.backgroundColor = "green"
+        // }
+
+        myButton.onmouseout = function(){
+            myButton.style.backgroundColor = "red"
+        }
+
+        let buttons = document.getElementsByClassName("myButton")
+
+        // I want to know which button is clicked.
+        for(let i = 0; i < buttons.length; i++){
+            buttons[i].onclick = function(){
+                alert("Button " + (i + 1) + " clicked!")
+            }
+        }
+
+        let myInput = document.getElementById("myinput")
+        // myInput.onchange = function(){
+        //     alert("Input value has changed!")
+        // }
+
+        myInput.onkeydown = function(event){
+            console.log(event.keyCode)
+        }
+
+        myInput.addEventListener("keydown", function(event){
+            console.log(event.key)
+        })
+
+        let myHeading = document.getElementById("myHeading")
+
+        window.onload = function(){
+            myHeading.style.color = "red";
+        }
+
+        let myWindow = window
+        myWindow.onscroll = function(){
+            console.log("Window scrolled!")
+        }
+    </script>
+    <script src="event.js"></script>
+</body>
+</html>
